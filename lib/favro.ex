@@ -48,8 +48,10 @@ defmodule Favro do
   @doc """
   Create a new Card
   """
+  def create_card(card),
+    do: Card.create(new(), card)
   defdelegate create_card(handle, card),
-    to: Favro.Card, as: :create
+    to: Card, as: :create
 
   @doc """
   List Favro columns, optionally filtering using a set of query options.
@@ -64,8 +66,10 @@ defmodule Favro do
   @doc """
   Create a new column
   """
+  def create_column(column),
+    do: Column.create(new(), column)
   defdelegate create_column(handle, column),
-    to: Favro.Column, as: :create
+    to: Column, as: :create
 
   @doc """
   List Favro widgets, optionally filtering using a set of query options.
@@ -80,6 +84,8 @@ defmodule Favro do
   @doc """
   Create a new widget
   """
+  def create_widget(widget),
+    do: Widget.create(new(), widget)
   defdelegate create_widget(handle, widget),
     to: Widget, as: :create
 
@@ -96,6 +102,8 @@ defmodule Favro do
   @doc """
   Create a new Tag
   """
+  def create_tag(tag),
+    do: Tag.create(new(), tag)
   defdelegate create_tag(handle, tag),
     to: Tag, as: :create
 
@@ -112,6 +120,8 @@ defmodule Favro do
   @doc """
   Create a new task
   """
+  def create_task(task),
+    do: Task.create(new(), task)
   defdelegate create_task(handle, task),
     to: Task, as: :create
 
@@ -128,6 +138,8 @@ defmodule Favro do
   @doc """
   Create a new task list
   """
+  def create_task_list(task_list),
+    do: TaskList.create(new(), task_list)
   defdelegate create_task_list(handle, task_list),
     to: TaskList, as: :create
 end
