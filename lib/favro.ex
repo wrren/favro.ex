@@ -36,7 +36,41 @@ defmodule Favro do
   end
 
   @doc """
+  List Favro widgets, optionally filtering using a set of query options.
+
+  ## Options
+
+      * `:collection` - Return only widgets from the collection with the specified ID
+  """
+  defdelegate list_widgets,
+    to: Widget, as: :list
+  defdelegate list_widgets(handle_or_opts),
+    to: Widget, as: :list
+  defdelegate list_widgets(handle, opts),
+    to: Widget, as: :list
+
+  @doc """
+  Create a new widget
+  """
+  def create_widget(widget),
+    do: Widget.create(new(), widget)
+  defdelegate create_widget(handle, widget),
+    to: Widget, as: :create
+
+  @doc """
   List Favro cards, optionally filtering using a set of query options.
+
+  ## Options
+
+    * `:collection` - Return only cards from the collection with the specified ID
+
+    * `:widget` - Return only cards from the widget with the specified ID
+
+    * `:column` - Return only cards from the column with the specified ID
+
+    * `:archived` - If true, only returns cards that have been archived
+
+    * `:unique` - If true, only returns unique cards
   """
   defdelegate list_cards,
     to: Card, as: :list
@@ -55,6 +89,10 @@ defmodule Favro do
 
   @doc """
   List Favro columns, optionally filtering using a set of query options.
+
+  ## Options
+
+    * `:widget` - Return only columns from the widget with the specified ID
   """
   defdelegate list_columns,
     to: Column, as: :list
@@ -72,25 +110,11 @@ defmodule Favro do
     to: Column, as: :create
 
   @doc """
-  List Favro widgets, optionally filtering using a set of query options.
-  """
-  defdelegate list_widgets,
-    to: Widget, as: :list
-  defdelegate list_widgets(handle_or_opts),
-    to: Widget, as: :list
-  defdelegate list_widgets(handle, opts),
-    to: Widget, as: :list
-
-  @doc """
-  Create a new widget
-  """
-  def create_widget(widget),
-    do: Widget.create(new(), widget)
-  defdelegate create_widget(handle, widget),
-    to: Widget, as: :create
-
-  @doc """
   List Favro tags, optionally filtering using a set of query options.
+
+  ## Options
+
+    * `:name` - Return only tags with this name
   """
   defdelegate list_tags,
     to: Tag, as: :list
@@ -109,6 +133,12 @@ defmodule Favro do
 
   @doc """
   List Favro tasks, optionally filtering using a set of query options.
+
+  ## Options
+
+    * `:card` - Return only tasks from the card with the given ID
+
+    * `:task_list` - Return only tasks from the task list with the given ID
   """
   defdelegate list_tasks,
     to: Task, as: :list
@@ -127,6 +157,10 @@ defmodule Favro do
 
   @doc """
   List Favro task lists, optionally filtering using a set of query options.
+
+  ## Options
+
+      * `:card` - Return only task lists from the card with the given ID
   """
   defdelegate list_task_lists,
     to: TaskList, as: :list

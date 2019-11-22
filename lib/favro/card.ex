@@ -38,8 +38,14 @@ defmodule Favro.Card do
   @doc false
   defp build_query(params, [{:collection, id} | t]),
     do: build_query(Map.put(params, "collectionId", id), t)
-  defp build_query(params, [{:archived, id} | t]),
-    do: build_query(Map.put(params, "archived", id), t)
+  defp build_query(params, [{:widget, id} | t]),
+    do: build_query(Map.put(params, "widgetCommonId", id), t)
+  defp build_query(params, [{:column, id} | t]),
+    do: build_query(Map.put(params, "columnId", id), t)
+  defp build_query(params, [{:archived, archived} | t]),
+    do: build_query(Map.put(params, "archived", archived), t)
+  defp build_query(params, [{:unique, unique} | t]),
+    do: build_query(Map.put(params, "unique", unique), t)
   defp build_query(params, []) when is_map(params) and map_size(params) == 0,
     do: ""
   defp build_query(params, []) when is_map(params) and map_size(params) > 0,
