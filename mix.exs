@@ -7,7 +7,9 @@ defmodule Favro.MixProject do
       version: "0.2.1",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      description: description(),
+      package: package()
     ]
   end
 
@@ -23,6 +25,19 @@ defmodule Favro.MixProject do
     [
       {:httpoison,  "~> 1.6.2"},
       {:jason,      "~> 1.1"}
+    ]
+  end
+
+  def description do
+    "Favro API Client Library"
+  end
+
+  def package do
+    [
+      name: "favro",
+      maintainers: ["Warren Kenny"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/wrren/favro.ex"}
     ]
   end
 end
